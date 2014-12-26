@@ -1,0 +1,7 @@
+.foo:matches(:hover, :active, :focus) {
+  background: red;
+}
+
+.bar :matches(div, p) :matches(.baz, .foo) {
+  background: blue;
+}

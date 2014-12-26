@@ -1,0 +1,12 @@
+.foo:hover,
+.foo:active,
+.foo:focus {
+  background: red;
+}
+
+.bar div .baz,
+.bar div .foo,
+.bar p .baz,
+.bar p .foo {
+  background: blue;
+}
