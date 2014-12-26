@@ -35,21 +35,28 @@ module.exports = function() {
       }).split(',');
       rule.selectors = actualSelectors;
       rule.selectors.forEach(function findMatchesSelector(selector, i) {
-        var options, match, values, matches;
+        var options, match, values, matches, lastIndex;
         if (selector.indexOf(':matches(') !== -1) {
           values = [];
           matches = [];
+
 
           while (match = MATCH_REGEX.exec(selector)) {
             if (match[1].indexOf(':matches(') !== -1 || match[1].indexOf(':not(') !== -1) {
               throw new Error(
                 'Cannot nest :matches(...) or :not(...) in :matches(...) selector: ' +
                 selector
-              )
+              );
+            } else if (lastIndex === match.index) {
+              throw new Error(
+                'Cannot have sequential :matches in selector: ' +
+                selector
+              );
             }
 
             matches.push(match[0]);
             values.push(match[1].split(COMMA_PLACEHOLDER));
+            lastIndex = MATCH_REGEX.lastIndex;
           }
 
           rule.selectors.splice(i, 1);

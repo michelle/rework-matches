@@ -5,11 +5,11 @@ var fs = require('fs');
 var FILE = 'test/css/';
 
 function test(type) {
-  var expected = fs.readFileSync(FILE + type + '.out.css', 'utf8').trim();
   var actual = rework(fs.readFileSync(FILE + type + '.css', 'utf8'))
     .use(unique())
     .toString()
     .trim();
+  var expected = fs.readFileSync(FILE + type + '.out.css', 'utf8').trim();
   if (actual !== expected) {
     var error = 'Failed!\n';
     var result = diff.diffLines(expected, actual);
@@ -31,3 +31,12 @@ function test(type) {
 
 test('no-matches');
 test('matches');
+try {
+  test('invalid-matches');
+} catch(e) {
+  if (e.message.indexOf('sequential :matches') !== -1) {
+    console.log('invalid-matches test passed!');
+  } else {
+    throw e;
+  }
+}

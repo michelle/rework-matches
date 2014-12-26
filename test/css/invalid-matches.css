@@ -1,0 +1,3 @@
+:matches(div, p):matches(.baz, .foo) {
+  background: blue;
+}
