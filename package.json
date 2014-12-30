@@ -1,6 +1,6 @@
 {
   "name": "rework-matches",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A rework plugin for the :matches CSS pseudo-selector.",
   "main": "index.js",
   "directories": {
@@ -15,6 +15,11 @@
   },
   "author": "Michelle Bu",
   "license": "MIT",
+  "keywords": [
+    "rework",
+    "css",
+    "matches"
+  ],
   "devDependencies": {
     "rework": "~0.20.3",
     "diff": "~1.0.8"
