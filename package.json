@@ -1,6 +1,6 @@
 {
   "name": "rework-matches",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A rework plugin for the :matches CSS pseudo-selector.",
   "main": "index.js",
   "directories": {

@@ -28,6 +28,10 @@ module.exports = function() {
         rule.rules.forEach(replaceMatches);
       }
 
+      if (!rule.selectors) {
+        return;
+      }
+
       // Unfortunately rework unconditionally splits selectors by comma, so our
       // :matches(...) selector gets munged.
       var actualSelectors = rule.selectors.join(',').replace(/:matches\(.*\)/g, function(substr) {
