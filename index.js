@@ -45,12 +45,12 @@ module.exports = function() {
             if (match[1].indexOf(':matches(') !== -1 || match[1].indexOf(':not(') !== -1) {
               throw new Error(
                 'Cannot nest :matches(...) or :not(...) in :matches(...) selector: ' +
-                selector.replace(/&/g, ',');
+                selector.replace(/&/g, ',')
               );
             } else if (lastIndex === match.index) {
               throw new Error(
                 'Cannot have sequential :matches in selector: ' +
-                selector.replace(/&/g, ',');
+                selector.replace(/&/g, ',')
               );
             }
 
