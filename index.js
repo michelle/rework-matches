@@ -34,7 +34,7 @@ module.exports = function() {
 
       // Unfortunately rework unconditionally splits selectors by comma, so our
       // :matches(...) selector gets munged.
-      var actualSelectors = rule.selectors.join(',').replace(/:matches\(.*\)/g, function(substr) {
+      var actualSelectors = rule.selectors.join(',').replace(/:matches\(.*?\)/g, function(substr) {
         return substr.replace(/,/g, COMMA_PLACEHOLDER);
       }).split(',');
       rule.selectors = actualSelectors;
