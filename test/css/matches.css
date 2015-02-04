@@ -1,4 +1,5 @@
-.foo:matches(:hover, :active, :focus) {
+.foo:matches(:hover, :active, :focus),
+.baz:matches(:hover, :active, :focus) {
   background: red;
 }
 

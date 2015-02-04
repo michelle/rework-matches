@@ -1,6 +1,9 @@
 .foo:hover,
 .foo:active,
-.foo:focus {
+.foo:focus,
+.baz:hover,
+.baz:active,
+.baz:focus {
   background: red;
 }
 
