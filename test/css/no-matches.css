@@ -2,6 +2,7 @@
   background: red;
 }
 
-.bar {
+.bar,
+.baz {
   background: blue;
 }

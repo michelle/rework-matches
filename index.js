@@ -22,6 +22,10 @@ module.exports = function() {
     return arr;
   }
 
+  function isNotMatchesSelector(selector) {
+    return selector.indexOf(':matches(') === -1;
+  }
+
   return function(style) {
     style.rules.forEach(function replaceMatches(rule) {
       if (rule.rules) {
@@ -34,9 +38,10 @@ module.exports = function() {
 
       // Unfortunately rework unconditionally splits selectors by comma, so our
       // :matches(...) selector gets munged.
-      var actualSelectors = rule.selectors.join(',').replace(/:matches\(.*\)/g, function(substr) {
+      var actualSelectors = rule.selectors.join(',').replace(/:matches\(.*?\)/g, function(substr) {
         return substr.replace(/,/g, COMMA_PLACEHOLDER);
       }).split(',');
+
       rule.selectors = actualSelectors;
       rule.selectors.forEach(function findMatchesSelector(selector, i) {
         var options, match, values, matches, lastIndex;
@@ -63,10 +68,11 @@ module.exports = function() {
             lastIndex = MATCH_REGEX.lastIndex;
           }
 
-          rule.selectors.splice(i, 1);
           addCartesianSelectors(selector, matches, values, rule.selectors);
         }
       });
+
+      rule.selectors = rule.selectors.filter(isNotMatchesSelector);
     });
   };
 };

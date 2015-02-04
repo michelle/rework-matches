@@ -1,12 +1,24 @@
 .foo:hover,
 .foo:active,
-.foo:focus {
+.foo:focus,
+.baz:hover,
+.baz:active,
+.baz:focus {
   background: red;
 }
 
+.foo .bar .baz,
 .bar div .baz,
 .bar div .foo,
 .bar p .baz,
 .bar p .foo {
   background: blue;
+}
+
+.foo .bar .baz,
+.bar div .baz,
+.bar div .foo,
+.bar p .baz,
+.bar p .foo {
+  color: tomato;
 }

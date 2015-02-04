@@ -1,7 +1,14 @@
-.foo:matches(:hover, :active, :focus) {
+.foo:matches(:hover, :active, :focus),
+.baz:matches(:hover, :active, :focus) {
   background: red;
 }
 
+.foo .bar .baz,
 .bar :matches(div, p) :matches(.baz, .foo) {
   background: blue;
+}
+
+.bar :matches(div, p) :matches(.baz, .foo),
+.foo .bar .baz {
+  color: tomato;
 }
