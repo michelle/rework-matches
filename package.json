@@ -21,7 +21,7 @@
     "matches"
   ],
   "devDependencies": {
-    "rework": "~0.20.3",
+    "rework": "~1.0.1",
     "diff": "~1.0.8"
   }
 }
